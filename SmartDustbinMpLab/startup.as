@@ -2,7 +2,7 @@
 	; HI-TECH C Compiler for PIC10/12/16 MCUs V9.81
 	; Copyright (C) 1984-2010 HI-TECH Software
 
-	; Auto-generated runtime startup code for prelink stage.
+	; Auto-generated runtime startup code for final link stage.
 
 	;
 	; Compiler options:

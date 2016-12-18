@@ -1,5 +1,5 @@
 
-# 1 "G:\SmartDustbin\main.c"
+# 1 "C:\Users\user\Desktop\SmartDustbinMpLab\main.c"
 
 # 82 "C:\Program Files (x86)\HI-TECH Software\PICC\9.81\include\pic16f877a.h"
 volatile unsigned char INDF @ 0x000;
@@ -1088,48 +1088,37 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 3 "G:\SmartDustbin\main.c"
+# 3 "C:\Users\user\Desktop\SmartDustbinMpLab\main.c"
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3F39");
 
-void main(){
-int a;
+void main()
+{
 TRISC = 0b00000000;
+PORTC = 0b00000000;
+int a;
 TRISB = 0b00010000;
-T1CON = 0b00010000;
-
-while(1){
+T1CON = 0x10;
+while(1)
+{
 TMR1H = 0;
 TMR1L = 0;
-PORTC = 0b00000000;
-PORTB = 0b00000001;
+RB0 = 1;
 _delay((unsigned long)((10)*(4000000/4000000.0)));
-PORTB = 0b00000000;
-while(PORTB == 0b00000000){
-T1CON = 0b00000001;
-}
-while(PORTB == 0b00001000){
-T1CON = 0b00000000;
-}
+RB0 = 0;
+while(!RB4);
+TMR1ON = 1;
+while(RB4);
+TMR1ON = 0;
 a = (TMR1L | (TMR1H<<8));
-a = a/58;
-
-if(a >= 2 && a <= 50){
+a = a/(29.41);
+a = a + 1;
+if(a >= 2 && a <= 10){
 PORTC = 0b00000001;
-} else if(a >= 51 && a <= 100) {
-PORTC = 0b00000010;
-} else if(a >= 101 && a <= 150) {
-PORTC = 0b00000100;
-} else if(a >= 151 && a <= 200) {
-PORTC = 0b00001000;
-} else if(a >= 201 && a <= 250) {
-PORTC = 0b00010000;
-} else if(a >= 251 && a <= 300) {
-PORTC = 0b00100000;
-} else if(a >= 301 && a <= 350) {
-PORTC = 0b01000000;
-} else if(a >= 351 && a <= 400) {
-PORTC = 0b10000000;
-} else {
+} else if(a >= 11 && a <= 20){
+PORTC = 0b00000011;
+}else if(a >= 21 && a <= 30){
+PORTC = 0b00000111;
+}else {
 PORTC = 0b00000000;
 }
 _delay((unsigned long)((400)*(4000000/4000.0)));

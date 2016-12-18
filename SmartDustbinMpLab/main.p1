@@ -1714,194 +1714,135 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 41: extern void eeprom_write(unsigned char addr, unsigned char value);
 [; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
 [; ;pic.h: 148: extern void _delay(unsigned long);
-"3 G:\SmartDustbin\main.c
+"3 C:\Users\user\Desktop\SmartDustbinMpLab\main.c
 [; ;main.c: 3: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3F39");
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0X3F39 ;#
-"5
+"6
 [v _main `(v 1 ef ]
 {
-[; ;main.c: 5: void main(){
+[; ;main.c: 5: void main()
+[; ;main.c: 6: {
 [e :U _main ]
 [f ]
-"6
-[v _a `i 1 a ]
-[; ;main.c: 6: int a;
 [; ;main.c: 7: TRISC = 0b00000000;
 "7
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 8: TRISB = 0b00010000;
+[; ;main.c: 8: PORTC = 0b00000000;
 "8
-[e = _TRISB -> -> 16 `i `uc ]
-[; ;main.c: 9: T1CON = 0b00010000;
-"9
-[e = _T1CON -> -> 16 `i `uc ]
-[; ;main.c: 11: while(1){
-"11
-[e :U 103 ]
-{
-[; ;main.c: 12: TMR1H = 0;
-"12
-[e = _TMR1H -> -> 0 `i `uc ]
-[; ;main.c: 13: TMR1L = 0;
-"13
-[e = _TMR1L -> -> 0 `i `uc ]
-[; ;main.c: 14: PORTC = 0b00000000;
-"14
 [e = _PORTC -> -> 0 `i `uc ]
-[; ;main.c: 15: PORTB = 0b00000001;
+"9
+[v _a `i 1 a ]
+[; ;main.c: 9: int a;
+[; ;main.c: 10: TRISB = 0b00010000;
+"10
+[e = _TRISB -> -> 16 `i `uc ]
+[; ;main.c: 11: T1CON = 0x10;
+"11
+[e = _T1CON -> -> 16 `i `uc ]
+[; ;main.c: 12: while(1)
+"12
+[e :U 103 ]
+[; ;main.c: 13: {
+"13
+{
+[; ;main.c: 14: TMR1H = 0;
+"14
+[e = _TMR1H -> -> 0 `i `uc ]
+[; ;main.c: 15: TMR1L = 0;
 "15
-[e = _PORTB -> -> 1 `i `uc ]
-[; ;main.c: 16: _delay((unsigned long)((10)*(4000000/4000000.0)));
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;main.c: 16: RB0 = 1;
 "16
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 17: PORTB = 0b00000000;
+[e = _RB0 -> -> 1 `i `b ]
+[; ;main.c: 17: _delay((unsigned long)((10)*(4000000/4000000.0)));
 "17
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 18: while(PORTB == 0b00000000){
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 18: RB0 = 0;
 "18
+[e = _RB0 -> -> 0 `i `b ]
+[; ;main.c: 19: while(!RB4);
+"19
 [e $U 105  ]
 [e :U 106 ]
-{
-[; ;main.c: 19: T1CON = 0b00000001;
-"19
-[e = _T1CON -> -> 1 `i `uc ]
-"20
-}
 [e :U 105 ]
-"18
-[e $ == -> _PORTB `i -> 0 `i 106  ]
+[e $ ! _RB4 106  ]
 [e :U 107 ]
-[; ;main.c: 20: }
-[; ;main.c: 21: while(PORTB == 0b00001000){
+[; ;main.c: 20: TMR1ON = 1;
+"20
+[e = _TMR1ON -> -> 1 `i `b ]
+[; ;main.c: 21: while(RB4);
 "21
 [e $U 108  ]
 [e :U 109 ]
-{
-[; ;main.c: 22: T1CON = 0b00000000;
-"22
-[e = _T1CON -> -> 0 `i `uc ]
-"23
-}
 [e :U 108 ]
-"21
-[e $ == -> _PORTB `i -> 8 `i 109  ]
+[e $ _RB4 109  ]
 [e :U 110 ]
-[; ;main.c: 23: }
-[; ;main.c: 24: a = (TMR1L | (TMR1H<<8));
-"24
+[; ;main.c: 22: TMR1ON = 0;
+"22
+[e = _TMR1ON -> -> 0 `i `b ]
+[; ;main.c: 23: a = (TMR1L | (TMR1H<<8));
+"23
 [e = _a | -> _TMR1L `i << -> _TMR1H `i -> 8 `i ]
-[; ;main.c: 25: a = a/58;
+[; ;main.c: 24: a = a/(29.41);
+"24
+[e = _a -> / -> _a `d .29.41 `i ]
+[; ;main.c: 25: a = a + 1;
 "25
-[e = _a / _a -> 58 `i ]
-[; ;main.c: 27: if(a >= 2 && a <= 50){
-"27
-[e $ ! && >= _a -> 2 `i <= _a -> 50 `i 111  ]
+[e = _a + _a -> 1 `i ]
+[; ;main.c: 26: if(a >= 2 && a <= 10){
+"26
+[e $ ! && >= _a -> 2 `i <= _a -> 10 `i 111  ]
 {
-[; ;main.c: 28: PORTC = 0b00000001;
-"28
+[; ;main.c: 27: PORTC = 0b00000001;
+"27
 [e = _PORTC -> -> 1 `i `uc ]
-"29
+"28
 }
-[; ;main.c: 29: } else if(a >= 51 && a <= 100) {
+[; ;main.c: 28: } else if(a >= 11 && a <= 20){
 [e $U 112  ]
 [e :U 111 ]
-[e $ ! && >= _a -> 51 `i <= _a -> 100 `i 113  ]
+[e $ ! && >= _a -> 11 `i <= _a -> 20 `i 113  ]
 {
-[; ;main.c: 30: PORTC = 0b00000010;
+[; ;main.c: 29: PORTC = 0b00000011;
+"29
+[e = _PORTC -> -> 3 `i `uc ]
 "30
-[e = _PORTC -> -> 2 `i `uc ]
-"31
 }
-[; ;main.c: 31: } else if(a >= 101 && a <= 150) {
+[; ;main.c: 30: }else if(a >= 21 && a <= 30){
 [e $U 114  ]
 [e :U 113 ]
-[e $ ! && >= _a -> 101 `i <= _a -> 150 `i 115  ]
+[e $ ! && >= _a -> 21 `i <= _a -> 30 `i 115  ]
 {
-[; ;main.c: 32: PORTC = 0b00000100;
+[; ;main.c: 31: PORTC = 0b00000111;
+"31
+[e = _PORTC -> -> 7 `i `uc ]
 "32
-[e = _PORTC -> -> 4 `i `uc ]
-"33
 }
-[; ;main.c: 33: } else if(a >= 151 && a <= 200) {
+[; ;main.c: 32: }else {
 [e $U 116  ]
 [e :U 115 ]
-[e $ ! && >= _a -> 151 `i <= _a -> 200 `i 117  ]
 {
-[; ;main.c: 34: PORTC = 0b00001000;
-"34
-[e = _PORTC -> -> 8 `i `uc ]
-"35
-}
-[; ;main.c: 35: } else if(a >= 201 && a <= 250) {
-[e $U 118  ]
-[e :U 117 ]
-[e $ ! && >= _a -> 201 `i <= _a -> 250 `i 119  ]
-{
-[; ;main.c: 36: PORTC = 0b00010000;
-"36
-[e = _PORTC -> -> 16 `i `uc ]
-"37
-}
-[; ;main.c: 37: } else if(a >= 251 && a <= 300) {
-[e $U 120  ]
-[e :U 119 ]
-[e $ ! && >= _a -> 251 `i <= _a -> 300 `i 121  ]
-{
-[; ;main.c: 38: PORTC = 0b00100000;
-"38
-[e = _PORTC -> -> 32 `i `uc ]
-"39
-}
-[; ;main.c: 39: } else if(a >= 301 && a <= 350) {
-[e $U 122  ]
-[e :U 121 ]
-[e $ ! && >= _a -> 301 `i <= _a -> 350 `i 123  ]
-{
-[; ;main.c: 40: PORTC = 0b01000000;
-"40
-[e = _PORTC -> -> 64 `i `uc ]
-"41
-}
-[; ;main.c: 41: } else if(a >= 351 && a <= 400) {
-[e $U 124  ]
-[e :U 123 ]
-[e $ ! && >= _a -> 351 `i <= _a -> 400 `i 125  ]
-{
-[; ;main.c: 42: PORTC = 0b10000000;
-"42
-[e = _PORTC -> -> 128 `i `uc ]
-"43
-}
-[; ;main.c: 43: } else {
-[e $U 126  ]
-[e :U 125 ]
-{
-[; ;main.c: 44: PORTC = 0b00000000;
-"44
+[; ;main.c: 33: PORTC = 0b00000000;
+"33
 [e = _PORTC -> -> 0 `i `uc ]
-"45
+"34
 }
-[e :U 126 ]
-[e :U 124 ]
-[e :U 122 ]
-[e :U 120 ]
-[e :U 118 ]
 [e :U 116 ]
 [e :U 114 ]
 [e :U 112 ]
-[; ;main.c: 45: }
-[; ;main.c: 46: _delay((unsigned long)((400)*(4000000/4000.0)));
-"46
+[; ;main.c: 34: }
+[; ;main.c: 35: _delay((unsigned long)((400)*(4000000/4000.0)));
+"35
 [e ( __delay (1 -> * -> -> 400 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"47
+"36
 }
 [e :U 102 ]
-"11
+"12
 [e $U 103  ]
 [e :U 104 ]
-[; ;main.c: 47: }
-[; ;main.c: 48: }
-"48
+[; ;main.c: 36: }
+[; ;main.c: 37: }
+"37
 [e :UE 101 ]
 }
