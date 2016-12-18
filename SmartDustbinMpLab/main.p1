@@ -1714,7 +1714,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 41: extern void eeprom_write(unsigned char addr, unsigned char value);
 [; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
 [; ;pic.h: 148: extern void _delay(unsigned long);
-"3 C:\Users\user\Desktop\SmartDustbinMpLab\main.c
+"3 G:\SmartDustbinMpLab\main.c
 [; ;main.c: 3: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3F39");
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0X3F39 ;#
@@ -1737,9 +1737,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 10: TRISB = 0b00010000;
 "10
 [e = _TRISB -> -> 16 `i `uc ]
-[; ;main.c: 11: T1CON = 0x10;
+[; ;main.c: 11: T1CON = 0x00010000;
 "11
-[e = _T1CON -> -> 16 `i `uc ]
+[e = _T1CON -> -> 65536 `l `uc ]
 [; ;main.c: 12: while(1)
 "12
 [e :U 103 ]
@@ -1790,29 +1790,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 25: a = a + 1;
 "25
 [e = _a + _a -> 1 `i ]
-[; ;main.c: 26: if(a >= 2 && a <= 10){
+[; ;main.c: 26: if(a >= 2.0 && a <= 10.0){
 "26
-[e $ ! && >= _a -> 2 `i <= _a -> 10 `i 111  ]
+[e $ ! && >= -> _a `d .2.0 <= -> _a `d .10.0 111  ]
 {
 [; ;main.c: 27: PORTC = 0b00000001;
 "27
 [e = _PORTC -> -> 1 `i `uc ]
 "28
 }
-[; ;main.c: 28: } else if(a >= 11 && a <= 20){
+[; ;main.c: 28: } else if(a >= 10.1 && a <= 20.0){
 [e $U 112  ]
 [e :U 111 ]
-[e $ ! && >= _a -> 11 `i <= _a -> 20 `i 113  ]
+[e $ ! && >= -> _a `d .10.1 <= -> _a `d .20.0 113  ]
 {
 [; ;main.c: 29: PORTC = 0b00000011;
 "29
 [e = _PORTC -> -> 3 `i `uc ]
 "30
 }
-[; ;main.c: 30: }else if(a >= 21 && a <= 30){
+[; ;main.c: 30: }else if(a >= 20.1 && a <= 30.0){
 [e $U 114  ]
 [e :U 113 ]
-[e $ ! && >= _a -> 21 `i <= _a -> 30 `i 115  ]
+[e $ ! && >= -> _a `d .20.1 <= -> _a `d .30.0 115  ]
 {
 [; ;main.c: 31: PORTC = 0b00000111;
 "31

@@ -26,26 +26,28 @@ Machine type is 16F877A
 startup.obj     end_init                              0        0        3        0       0
 SmartDustbin.obj
                 config                             2007     2007        1     400E       0
-                text148                             52C      52C       7B      A58       0
-                text147                             5A7      5A7       A6      B4E       0
-                text146                             64D      64D       C8      C9A       0
-                text145                             500      500       2C      A00       0
-                maintext                            715      715       EB      E2A       0
-                cstackBANK0                          20       20       23       20       1
+                text172                             4AE      4AE       7B      95C       0
+                text171                             529      529       A6      A52       0
+                text170                             43E      43E       70      87C       0
+                text169                             5CF      5CF       C8      B9E       0
+                text168                             412      412       2C      824       0
+                maintext                            697      697      169      D2E       0
+                cstackBANK0                          20       20       25       20       1
                 cstackCOMMON                         70       70        E       70       1
-                cinit                               4FC      4FC        4      9F8       0
+                cinit                               40E      40E        4      81C       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
 
         CLASS   CODE           
                 end_init                              0        0        3         0
-                text148                             52C      52C       7B         0
-                text147                             5A7      5A7       A6         0
-                text146                             64D      64D       C8         0
-                text145                             500      500       2C         0
-                maintext                            715      715       EB         0
-                cinit                               4FC      4FC        4         0
+                text172                             4AE      4AE       7B         0
+                text171                             529      529       A6         0
+                text170                             43E      43E       70         0
+                text169                             5CF      5CF       C8         0
+                text168                             412      412       2C         0
+                maintext                            697      697      169         0
+                cinit                               40E      40E        4         0
 
         CLASS   STRCODE        
 
@@ -54,7 +56,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   STRING         
 
         CLASS   BANK0          
-                cstackBANK0                          20       20       23         1
+                cstackBANK0                          20       20       25         1
 
         CLASS   BANK1          
 
@@ -90,33 +92,34 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                cstackBANK0                    000020  000023  000043        20       1  BANK0       1
+                cstackBANK0                    000020  000025  000045        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                cinit                          0004FC  000004  000500       9F8       0  CODE        2
-                text145                        000500  00002C  00052C       A00       0  CODE        2
-                text148                        00052C  00007B  0005A7       A58       0  CODE        2
-                text147                        0005A7  0000A6  00064D       B4E       0  CODE        2
-                text146                        00064D  0000C8  000715       C9A       0  CODE        2
-                maintext                       000715  0000EB  000800       E2A       0  CODE        2
+                cinit                          00040E  000004  000412       81C       0  CODE        2
+                text168                        000412  00002C  00043E       824       0  CODE        2
+                text170                        00043E  000070  0004AE       87C       0  CODE        2
+                text172                        0004AE  00007B  000529       95C       0  CODE        2
+                text171                        000529  0000A6  0005CF       A52       0  CODE        2
+                text169                        0005CF  0000C8  000697       B9E       0  CODE        2
+                maintext                       000697  000169  000800       D2E       0  CODE        2
                 config                         002007  000001  002008      400E       0  CONFIG      2
 
 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            0043-006F             2D           1
+        BANK0            0045-006F             2B           1
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0003-04FB            4F9           2
+        CODE             0003-040D            40B           2
                          0800-1FFF            800
-        CONST            0003-04FB            100           2
+        CONST            0003-040D            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0003-04FB            100           2
+        ENTRY            0003-040D            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
-        RAM              0043-006F             2D           1
+        RAM              0045-006F             2B           1
                          00A0-00EF             50
                          0110-016F             60
                          0190-01EF             60
@@ -124,20 +127,22 @@ UNUSED ADDRESS RANGES
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          0003-04FB            4F9           2
+        STRCODE          0003-040D            40B           2
                          0800-1FFF           1800
-        STRING           0003-04FB            100           2
+        STRING           0003-040D            100           2
                          0800-1FFF            100
 
                                   Symbol Table
 
-??___awtoft           cstackCOMMON 007C
-??___ftdiv            cstackBANK0  0034
+??___awtoft           cstackBANK0  002D
+??___ftdiv            cstackBANK0  0036
+??___ftge             cstackBANK0  0020
 ??___ftpack           cstackCOMMON 0075
 ??___fttol            cstackBANK0  0020
-??_main               cstackBANK0  003E
+??_main               cstackBANK0  0040
 ?___awtoft            cstackBANK0  002A
-?___ftdiv             cstackBANK0  002E
+?___ftdiv             cstackBANK0  0030
+?___ftge              cstackCOMMON 0078
 ?___ftpack            cstackCOMMON 0070
 ?___fttol             cstackCOMMON 0078
 ?_main                cstackCOMMON 0070
@@ -209,56 +214,62 @@ __Ltext               text         0000
 __S0                  (abs)        2008
 __S1                  (abs)        007E
 __S2                  (abs)        0000
-___awtoft             text145      0500
+___awtoft             text168      0412
 ___awtoft@c           cstackBANK0  002A
-___awtoft@sign        cstackBANK0  002D
-___ftdiv              text146      064D
-___ftdiv@cntr         cstackBANK0  0038
-___ftdiv@exp          cstackBANK0  003C
-___ftdiv@f1           cstackBANK0  0031
-___ftdiv@f2           cstackBANK0  002E
-___ftdiv@f3           cstackBANK0  0039
-___ftdiv@sign         cstackBANK0  003D
-___ftpack             text148      052C
+___awtoft@sign        cstackBANK0  002F
+___ftdiv              text169      05CF
+___ftdiv@cntr         cstackBANK0  003A
+___ftdiv@exp          cstackBANK0  003E
+___ftdiv@f1           cstackBANK0  0033
+___ftdiv@f2           cstackBANK0  0030
+___ftdiv@f3           cstackBANK0  003B
+___ftdiv@sign         cstackBANK0  003F
+___ftge               text170      043E
+___ftge@ff1           cstackCOMMON 0078
+___ftge@ff2           cstackCOMMON 007B
+___ftpack             text172      04AE
 ___ftpack@arg         cstackCOMMON 0070
 ___ftpack@exp         cstackCOMMON 0073
 ___ftpack@sign        cstackCOMMON 0074
-___fttol              text147      05A7
+___fttol              text171      0529
 ___fttol@exp1         cstackBANK0  0029
 ___fttol@f1           cstackCOMMON 0078
 ___fttol@lval         cstackBANK0  0025
 ___fttol@sign1        cstackBANK0  0024
-__end_of___awtoft     text145      052C
-__end_of___ftdiv      text146      0715
-__end_of___ftpack     text148      05A7
-__end_of___fttol      text147      064D
+__end_of___awtoft     text168      043E
+__end_of___ftdiv      text169      0697
+__end_of___ftge       text170      04AE
+__end_of___ftpack     text172      0529
+__end_of___fttol      text171      05CF
 __end_of_main         maintext     0800
 __pcstackBANK0        cstackBANK0  0020
 __pcstackCOMMON       cstackCOMMON 0070
-__pmaintext           maintext     0715
-__ptext144            text144      0000
-__ptext145            text145      0500
-__ptext146            text146      064D
-__ptext147            text147      05A7
-__ptext148            text148      052C
-__ptext149            text149      0000
+__pmaintext           maintext     0697
+__ptext167            text167      0000
+__ptext168            text168      0412
+__ptext169            text169      05CF
+__ptext170            text170      043E
+__ptext171            text171      0529
+__ptext172            text172      04AE
+__ptext173            text173      0000
 __size_of___awtoft    (abs)        0000
 __size_of___ftdiv     (abs)        0000
+__size_of___ftge      (abs)        0000
 __size_of___ftpack    (abs)        0000
 __size_of___fttol     (abs)        0000
 __size_of_main        (abs)        0000
 _exit                 init         0000
-_main                 maintext     0715
+_main                 maintext     0697
 btemp                 (abs)        007E
-end_of_initialization cinit        04FC
+end_of_initialization cinit        040E
 intlevel0             functab      0000
 intlevel1             functab      0000
 intlevel2             functab      0000
 intlevel3             functab      0000
 intlevel4             functab      0000
 intlevel5             functab      0000
-main@a                cstackBANK0  0041
+main@a                cstackBANK0  0043
 reset_vec             reset_vec    0000
 start                 init         0000
-start_initialization  cinit        04FC
+start_initialization  cinit        040E
 wtemp0                (abs)        007E

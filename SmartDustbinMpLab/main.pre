@@ -1,5 +1,5 @@
 
-# 1 "C:\Users\user\Desktop\SmartDustbinMpLab\main.c"
+# 1 "G:\SmartDustbinMpLab\main.c"
 
 # 82 "C:\Program Files (x86)\HI-TECH Software\PICC\9.81\include\pic16f877a.h"
 volatile unsigned char INDF @ 0x000;
@@ -1088,7 +1088,7 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 3 "C:\Users\user\Desktop\SmartDustbinMpLab\main.c"
+# 3 "G:\SmartDustbinMpLab\main.c"
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3F39");
 
 void main()
@@ -1097,7 +1097,7 @@ TRISC = 0b00000000;
 PORTC = 0b00000000;
 int a;
 TRISB = 0b00010000;
-T1CON = 0x10;
+T1CON = 0x00010000;
 while(1)
 {
 TMR1H = 0;
@@ -1112,11 +1112,11 @@ TMR1ON = 0;
 a = (TMR1L | (TMR1H<<8));
 a = a/(29.41);
 a = a + 1;
-if(a >= 2 && a <= 10){
+if(a >= 2.0 && a <= 10.0){
 PORTC = 0b00000001;
-} else if(a >= 11 && a <= 20){
+} else if(a >= 10.1 && a <= 20.0){
 PORTC = 0b00000011;
-}else if(a >= 21 && a <= 30){
+}else if(a >= 20.1 && a <= 30.0){
 PORTC = 0b00000111;
 }else {
 PORTC = 0b00000000;

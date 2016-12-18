@@ -23,11 +23,11 @@ void main()
     a = (TMR1L | (TMR1H<<8)); //Reads Timer Value
     a = a/(29.41);            //Converts Time to Distance
     a = a + 1;                //Distance Calibration
-    if(a >= 2 && a <= 10){
+    if(a >= 2.0 && a <= 5.0){
 		PORTC = 0b00000001;
-	} else if(a >= 11 && a <= 20){
+	} else if(a >= 5.1 && a <= 10.0){
 		PORTC = 0b00000011;
-	}else if(a >= 21 && a <= 30){
+	}else if(a >= 10.1 && a <= 15.0){
 		PORTC = 0b00000111;
 	}else {
 		PORTC = 0b00000000;
